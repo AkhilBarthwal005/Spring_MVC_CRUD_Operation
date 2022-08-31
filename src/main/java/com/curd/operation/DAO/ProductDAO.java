@@ -4,6 +4,7 @@ import com.curd.operation.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class ProductDAO {
     private HibernateTemplate hibernateTemplate;
 
     // create product
+    @Transactional
     public void createProduct(Product product){
         hibernateTemplate.save(product);
     }
@@ -24,16 +26,16 @@ public class ProductDAO {
     }
 
     // delete product
-    public boolean deleteProduct(int id){
+    @Transactional
+    public void deleteProduct(int id){
         Product product = hibernateTemplate.get(Product.class, id);
         if(product!=null){
             hibernateTemplate.delete(product);
-            return true;
         }
-        return false;
     }
 
     // update product
+    @Transactional
     public void updateProductDetails(Product product){
         hibernateTemplate.update(product);
     }
