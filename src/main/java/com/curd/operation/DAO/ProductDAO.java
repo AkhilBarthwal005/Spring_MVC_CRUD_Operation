@@ -14,10 +14,10 @@ public class ProductDAO {
     @Autowired
     private HibernateTemplate hibernateTemplate;
 
-    // create product
+    // create product or update product
     @Transactional
-    public void createProduct(Product product){
-        hibernateTemplate.save(product);
+    public void createProductOrUpdate(Product product){
+        hibernateTemplate.saveOrUpdate(product);
     }
 
     // get All products
@@ -34,12 +34,9 @@ public class ProductDAO {
         }
     }
 
-    // update product
-    @Transactional
-    public void updateProductDetails(Product product){
-        hibernateTemplate.update(product);
+    public Product getProduct(int id){
+        return hibernateTemplate.get(Product.class,id);
     }
-
 
 
 

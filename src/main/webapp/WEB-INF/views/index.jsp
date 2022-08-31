@@ -36,8 +36,11 @@
                                 <td>${product.id}</td>
                                 <td>${product.name}</td>
                                 <td>${product.description}</td>
-                                <td>${product.price}</td>
-                                <td><a href="product/${product.id}" class="fa-solid fa-trash text-danger" style="font-size: 1.5rem"></a></td>
+                                <td><span style="font-weight: bold">&#8377;</span> ${product.price}</td>
+                                <td>
+                                    <a href="product/${product.id}" class="text-danger" style="font-size: 1.5rem"><span><i class="fa-solid fa-trash"></i></span></a>
+                                    <a href="update/${product.id}" class="text-primary mx-2" style="font-size: 1.5rem"><span><i class="fa-solid fa-pencil"></i></span></a>
+                                </td>
                             </tr>
                         </c:forEach>
                     </tbody>

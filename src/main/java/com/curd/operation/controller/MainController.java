@@ -37,7 +37,7 @@ public class MainController {
     public RedirectView addProductHandler(@ModelAttribute Product product, HttpServletRequest request){
         System.out.println(product);
         // save product to the database
-        productDAO.createProduct(product);
+        productDAO.createProductOrUpdate(product);
         RedirectView redirectView = new RedirectView();
         // get contextPath is used to redirect it to /
         redirectView.setUrl(request.getContextPath() + "/");
@@ -51,5 +51,12 @@ public class MainController {
         productDAO.deleteProduct(product_id);
         redirectView.setUrl(request.getContextPath() +"/");
         return redirectView;
+    }
+
+    @RequestMapping("/update/{product_id}")
+    public String updateProductPage(@PathVariable("product_id") int product_id,Model model){
+        Product product = productDAO.getProduct(product_id);
+        model.addAttribute("product",product);
+        return "update-form";
     }
 }

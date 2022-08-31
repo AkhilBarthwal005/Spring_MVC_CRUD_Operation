@@ -17,7 +17,7 @@
 <body>
     <div class="container">
         <div class="text-center mt-3 mb-4">
-            <h1>Fill the for to Add Product</h1>
+            <h1>Fill the form to Add Product</h1>
         </div>
         <div class="row">
             <div class="col-md-6 offset-md-3">
